@@ -1,10 +1,11 @@
-// peerライブラリをインポート
-const { PeerServer } = require("peer");
+const { PeerServer } = require('peer');
 
-// PeerServerを初期化
-const peerServer = PeerServer({
-  port: 9000,
-  path: "/myapp",
+// Renderが指定するポート番号を取得。なければローカルテスト用に9000を使う
+const port = process.env.PORT || 9000;
+
+const peerServer = PeerServer({ 
+    port: port, // ← 変数を使うように変更
+    path: '/myapp' // pathは変更なしでOK
 });
 
-console.log("PeerJS server running on port 9000");
+console.log(`PeerJS server running on port ${port}`);
